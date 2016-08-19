@@ -311,7 +311,6 @@
 }
 
 
-
 - (void)setUpFrameWithX:(CGFloat)TX Y:(CGFloat)TY offset:(CGPoint)Toffset size:(CGSize)Tsize {
     
     CGFloat FX = TX + Toffset.x;
