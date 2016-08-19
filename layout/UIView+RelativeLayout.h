@@ -22,6 +22,7 @@ typedef enum {
     Relative_AlignX_RC      = 8
 }RelativeAlignX;
 
+//Relative_AlignX_TC :自己的顶部 按照 参照物的中间局部
 typedef enum {
     Relative_AlignY_TT      = 0,
     Relative_AlignY_TB      = 1,
