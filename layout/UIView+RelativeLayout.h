@@ -38,9 +38,18 @@ typedef enum {
 @interface UIView (RelativeLayout)
 
 #pragma mark  一个参照物
-- (void)setReference:(UIView *)refeView RelativeAlignX:(RelativeAlignX)relaX RelativeAlignY:(RelativeAlignY)relaY alignOffset:(CGPoint)offset size:(CGSize)size;
+- (void)setReference:(UIView *)refeView
+      RelativeAlignX:(RelativeAlignX)relaX
+      RelativeAlignY:(RelativeAlignY)relaY
+         alignOffset:(CGPoint)offset
+                size:(CGSize)size;
 
 #pragma mark 两个参照物
-- (void)setReferenceX:(UIView *)refeXView ReferenceY:(UIView *)refeYView RelativeAlignX:(RelativeAlignX)relaX RelativeAlignY:(RelativeAlignY)relaY alignOffset:(CGPoint)offset size:(CGSize)size;
+- (void)setReferenceX:(UIView *)refeXView
+           ReferenceY:(UIView *)refeYView
+       RelativeAlignX:(RelativeAlignX)relaX
+       RelativeAlignY:(RelativeAlignY)relaY
+          alignOffset:(CGPoint)offset
+                 size:(CGSize)size;
 
 @end

@@ -172,67 +172,9 @@
               RelativeAlignY:(RelativeAlignY)relaY
                  alignOffset:(CGPoint)offset
                         size:(CGSize)size {
-    CGFloat TX = 0;
-    switch (relaX) {
-        case Relative_AlignX_LL:
-            TX = 0;
-            break;
-        case Relative_AlignX_LR:
-            TX = refeView.frame.size.width;
-            break;
-        case Relative_AlignX_LC:
-            TX = refeView.frame.size.width/2;
-            break;
-        case Relative_AlignX_CL:
-            TX = - size.width/2;
-            break;
-        case Relative_AlignX_CR:
-            TX = refeView.frame.size.width - size.width/2;
-            break;
-        case Relative_AlignX_CC:
-            TX = refeView.frame.size.width/2 - (size.width/2);
-            break;
-        case Relative_AlignX_RL:
-            TX = - size.width;
-            break;
-        case Relative_AlignX_RR:
-            TX = refeView.frame.size.width - size.width;
-            break;
-        case Relative_AlignX_RC:
-            TX = refeView.frame.size.width/2 - size.width;
-            break;
-    }
+    CGFloat TX = [self getSuperTXWithReferenceX:refeView RelativeAlignX:relaX size:size];
     
-    CGFloat TY = 0;
-    switch (relaY) {
-        case Relative_AlignY_TT:
-            TY = 0;
-            break;
-        case Relative_AlignY_TB:
-            TY = refeView.frame.size.height;
-            break;
-        case Relative_AlignY_TC:
-            TY =refeView.frame.size.height/2;
-            break;
-        case Relative_AlignY_CT:
-            TY = - size.height/2;
-            break;
-        case Relative_AlignY_CB:
-            TY = refeView.frame.size.height - size.height/2;
-            break;
-        case Relative_AlignY_CC:
-            TY = refeView.frame.size.height/2 - (size.height/2);
-            break;
-        case Relative_AlignY_BT:
-            TY = - size.height;
-            break;
-        case Relative_AlignY_BB:
-            TY = refeView.frame.size.height - size.height;
-            break;
-        case Relative_AlignY_BC:
-            TY = refeView.frame.size.height/2 - size.height;
-            break;
-    }
+    CGFloat TY = [self getSuperTYWithReferenceY:refeView RelativeAlignY:relaY size:size];
     
     [self setUpFrameWithX:TX Y:TY offset:offset size:size];
     
@@ -244,6 +186,17 @@
             RelativeAlignY:(RelativeAlignY)relaY
                alignOffset:(CGPoint)offset
                       size:(CGSize)size {
+    
+    CGFloat TX = [self getSuperTXWithReferenceX:SuperRefeXView RelativeAlignX:relaX size:size];
+    CGFloat TY = [self getSuperTYWithReferenceY:SuperRefeYView RelativeAlignY:relaY size:size];
+    [self setUpFrameWithX:TX Y:TY offset:offset size:size];
+    
+}
+
+
+- (CGFloat)getSuperTXWithReferenceX:(UIView *)SuperRefeXView
+                        RelativeAlignX:(RelativeAlignX)relaX
+                               size:(CGSize)size {
     CGFloat TX = 0;
     switch (relaX) {
         case Relative_AlignX_LL:
@@ -274,7 +227,14 @@
             TX = SuperRefeXView.frame.size.width/2 - size.width;
             break;
     }
+    return TX;
     
+}
+
+
+- (CGFloat)getSuperTYWithReferenceY:(UIView *)SuperRefeYView
+                    RelativeAlignY:(RelativeAlignY)relaY
+                                size:(CGSize)size {
     CGFloat TY = 0;
     switch (relaY) {
         case Relative_AlignY_TT:
@@ -305,11 +265,9 @@
             TY = SuperRefeYView.frame.size.height/2 - size.height;
             break;
     }
-    
-    [self setUpFrameWithX:TX Y:TY offset:offset size:size];
+    return TY;
     
 }
-
 
 - (void)setUpFrameWithX:(CGFloat)TX Y:(CGFloat)TY offset:(CGPoint)Toffset size:(CGSize)Tsize {
     
