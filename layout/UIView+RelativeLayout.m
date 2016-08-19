@@ -40,22 +40,22 @@
        RelativeAlignY:(RelativeAlignY)relaY
           alignOffset:(CGPoint)offset
                  size:(CGSize)size {
+    
+    CGFloat TX = 0;
+    CGFloat TY = 0;
     if ([self.superview isEqual:refeXView]) {
-        [self setSuperReferenceX:refeXView
-                 SuperReferenceY:refeYView
-                  RelativeAlignX:relaX
-                  RelativeAlignY:relaY
-                     alignOffset:offset
-                            size:size];
-        
+        TX = [self getSuperTXWithReferenceX:refeXView RelativeAlignX:relaX size:size];
     } else {
-        [self setParallelReferenceX:refeXView
-                         ReferenceY:refeYView
-                     RelativeAlignX:relaX
-                     RelativeAlignY:relaY
-                        alignOffset:offset
-                               size:size];
+        TX = [self getParallelTXWithReferenceX:refeXView RelativeAlignX:relaX size:size];
     }
+    
+    if ([self.superview isEqual:refeYView]) {
+        TY = [self getSuperTYWithReferenceY:refeYView RelativeAlignY:relaY size:size];
+    } else {
+        TY = [self getParallelTYWithReferenceY:refeYView RelativeAlignY:relaY size:size];
+    }
+    
+    [self setUpFrameWithX:TX Y:TY offset:offset size:size];
 
 }
 

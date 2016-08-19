@@ -119,7 +119,7 @@
     label3.numberOfLines = 0;
     label3.font = FMFont(14);
     
-    [label3 setReferenceX:backWhiteView ReferenceY:label2 RelativeAlignX:Relative_AlignX_LL RelativeAlignY:Relative_AlignY_TB alignOffset:CGPointMake(10, 14) size:CGSizeMake(titlelabel.frame.size.width , 10)];
+    [label3 setReferenceX:backWhiteView ReferenceY:label2 RelativeAlignX:Relative_AlignX_LL RelativeAlignY:Relative_AlignY_TB alignOffset:CGPointMake(20, 14) size:CGSizeMake(titlelabel.frame.size.width , 10)];
     [label3 sizeToFit];
     
     

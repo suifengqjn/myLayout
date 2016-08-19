@@ -36,7 +36,13 @@ typedef enum {
 }RelativeAlignY;
 
 @interface UIView (RelativeLayout)
-
+/**
+ *  refeView :  X，Y 参照同一个对象
+ *  relaX     : X 对齐方式
+ *  relaY     : Y 对齐方式
+ *  offset    : 偏移量
+ *  size      : 大小
+ */
 #pragma mark  一个参照物
 - (void)setReference:(UIView *)refeView
       RelativeAlignX:(RelativeAlignX)relaX
@@ -44,6 +50,14 @@ typedef enum {
          alignOffset:(CGPoint)offset
                 size:(CGSize)size;
 
+/**
+ *  refeXView : X 参照的对象
+ *  refeYView : Y 参照的对象
+ *  relaX     : X 对齐方式
+ *  relaY     : Y 对齐方式
+ *  offset    : 偏移量
+ *  size      : 大小
+ */
 #pragma mark 两个参照物
 - (void)setReferenceX:(UIView *)refeXView
            ReferenceY:(UIView *)refeYView
