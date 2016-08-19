@@ -105,11 +105,7 @@
     }
     label2.numberOfLines = 0;
     label2.font = FMFont(14);
-    [label2 setReference:label1
-          RelativeAlignX:Relative_AlignX_LL
-          RelativeAlignY:Relative_AlignY_TB
-             alignOffset:CGPointMake(0, 14)
-                    size:CGSizeMake(titlelabel.frame.size.width , 10)];
+    [label2 setReferenceX:titlelabel ReferenceY:label1 RelativeAlignX:Relative_AlignX_LL RelativeAlignY:Relative_AlignY_TB alignOffset:CGPointMake(0, 14) size:CGSizeMake(titlelabel.frame.size.width , 10)];
     [label2 sizeToFit];
     
     

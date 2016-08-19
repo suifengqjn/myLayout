@@ -83,68 +83,9 @@
                   alignOffset:(CGPoint)offset
                          size:(CGSize)size  {
     
-    CGFloat TX = 0;
-    
-    switch (relaX) {
-        case Relative_AlignX_LL:
-            TX = CGRectGetMinX(refeXView.frame);
-            break;
-        case Relative_AlignX_LR:
-            TX = CGRectGetMaxX(refeXView.frame);
-            break;
-        case Relative_AlignX_LC:
-            TX = CGRectGetMinX(refeXView.frame) + refeXView.frame.size.width/2;
-            break;
-        case Relative_AlignX_CL:
-            TX = CGRectGetMinX(refeXView.frame) - size.width/2;
-            break;
-        case Relative_AlignX_CR:
-            TX = CGRectGetMaxX(refeXView.frame) - size.width/2;
-            break;
-        case Relative_AlignX_CC:
-            TX = CGRectGetMinX(refeXView.frame) + refeXView.frame.size.width/2 - (size.width/2);
-            break;
-        case Relative_AlignX_RL:
-            TX = CGRectGetMinX(refeXView.frame) - size.width;
-            break;
-        case Relative_AlignX_RR:
-            TX = CGRectGetMaxX(refeXView.frame) - size.width;
-            break;
-        case Relative_AlignX_RC:
-            TX = CGRectGetMinX(refeXView.frame) + refeXView.frame.size.width/2 - size.width;
-            break;
-    }
-    
-    CGFloat TY = 0;
-    switch (relaY) {
-        case Relative_AlignY_TT:
-            TY = CGRectGetMinY(refeYView.frame);
-            break;
-        case Relative_AlignY_TB:
-            TY = CGRectGetMaxY(refeYView.frame);
-            break;
-        case Relative_AlignY_TC:
-            TY = CGRectGetMinY(refeYView.frame) + refeYView.frame.size.height/2;
-            break;
-        case Relative_AlignY_CT:
-            TY = CGRectGetMinY(refeYView.frame) - size.height/2;
-            break;
-        case Relative_AlignY_CB:
-            TY = CGRectGetMaxY(refeYView.frame) - size.height/2;
-            break;
-        case Relative_AlignY_CC:
-            TY = CGRectGetMinY(refeYView.frame) + refeYView.frame.size.height/2 - (size.height/2);
-            break;
-        case Relative_AlignY_BT:
-            TY = CGRectGetMinY(refeYView.frame) - size.height;
-            break;
-        case Relative_AlignY_BB:
-            TY = CGRectGetMaxY(refeYView.frame) - size.height;
-            break;
-        case Relative_AlignY_BC:
-            TY = CGRectGetMinY(refeYView.frame) + refeYView.frame.size.height/2 - size.height;
-            break;
-    }
+    CGFloat TX = [self getParallelTXWithReferenceX:refeXView RelativeAlignX:relaX size:size];
+
+    CGFloat TY = [self getParallelTYWithReferenceY:refeYView RelativeAlignY:relaY size:size];
     
     [self setUpFrameWithX:TX Y:TY offset:offset size:size];
     
